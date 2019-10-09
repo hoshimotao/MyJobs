@@ -1,0 +1,165 @@
+// --------------------
+// Definition of variables
+$primary: #32c3ff;
+
+// ----------------------------------------
+// To install Boostrap:
+// 1) Run in the client folder: $ npm i bootstrap
+// 2) Import bootstrap with the following line
+// @import '../node_modules/bootstrap/scss/bootstrap.scss';
+//
+// To install Reactstrap:
+// 1) Run in the client folder: $ npm i reactstrap
+// 2) Go to the official documentation and take some examples: https://reactstrap.github.io/
+// import { Button } from 'reactstrap';
+// <Button color="danger">Danger!</Button>
+// ----------------------------------------
+
+// --------------------
+// Style reusable for all components
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.info {
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: #5776e9;
+  color: white;
+}
+
+.info.info-danger {
+  background-color: #e73f3f;
+}
+
+// --------------------
+// Style for App component
+.App {
+  text-align: center;
+
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+
+  .App-header {
+    background-color: $primary;
+    padding: 20px;
+    color: white;
+
+    a {
+      color: white;
+      padding: 0 5px;
+      text-decoration: unset;
+    }
+
+    a.active {
+      font-weight: bold;
+    }
+  }
+
+  .App-title {
+    font-size: 2.5em;
+  }
+
+  .App-intro {
+    font-size: large;
+  }
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// --------------------
+// Style for Home component
+.Home {
+  p {
+    font-size: 1.2em;
+  }
+}
+
+// --------------------
+// Style for Secret component
+.Secret {
+  .result {
+    font-size: 1.2em;
+    color: $primary;
+  }
+}
+
+.Login {
+  margin-top: 20px;
+}
+
+.bigTitle {
+  font-size: 3em;
+}
+
+.jobTitle {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 2em;
+  margin-top: 20px;
+
+
+}
+
+li {
+  list-style-type: none;
+}
+
+.companyName {
+  display: flex;
+  justify-content: flex-start;
+  color: gray;
+  font-size: 1.5em;
+
+}
+
+
+.listWidth {
+  margin-top: 20px;
+  width: 40vw;
+  border: 1px solid gray;
+  margin-left: 20px;
+  padding: 0px 10px 15px;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px lightgray;
+  height: auto;
+}
+
+.addToListSymbol {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.plusSign {
+  font-size: 1.2em;
+  color: blue;
+}
+
+.location {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.description {
+  padding-top: 10px;
+}
+
+.plusSign {
+  cursor: pointer;
+}
