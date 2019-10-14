@@ -8,11 +8,11 @@ export default class Home extends Component {
     filteredJob: [],
   }
 
-  componentDidMount() {
+  componentDidMount() { // 1 home page loads
     api
-      .getJobs()
-      .then(jobs => {
-        this.setState({
+      .getJobs()// 2 runs function called get Jobs
+      .then(jobs => {  // 7. - GOT RESPONSE FROM BACKEND ROUTER.GET /JOBS
+        this.setState({ // 8 - SET THE STATE TO THE FOLLOWING
           jobs: jobs,
           filteredJob: jobs,
         })
@@ -23,8 +23,8 @@ export default class Home extends Component {
   showJobs = e => {
     console.log(this.state.jobs)
 
-    let searchResult = this.state.jobs.filter(eachJob => {
-      return eachJob.jobTitle.toLowerCase().includes(e.target.value)
+    let searchResult = this.state.jobs.filter(eachJob => {  
+       return eachJob.jobTitle.toLowerCase().includes(e.target.value)
     })
     this.setState(
       {
@@ -35,7 +35,7 @@ export default class Home extends Component {
   }
 
   addToProfile = e => {
-    console.log('ELLO THERE')
+    console.log('Add to Profile')
     console.log(e.target.id)
 
     let id = e.target.id
@@ -62,8 +62,8 @@ export default class Home extends Component {
         {/* SEARCH BOX */}
         <input type="search" onChange={this.showJobs} placeholder="Search" />
 
-        {this.state.filteredJob.map((eachJob, i) => (
-          <div className="listWidth">
+        {this.state.filteredJob.map((eachJob, i) => ( //9 MAP THROUGH THE FILTERED JOBS AND DISPLAY RESULTS
+          <div key={i} className="listWidth">
             <div>
               <li key={i}>
                 <span className="jobTitle"> {eachJob.jobTitle} </span>

@@ -13,7 +13,6 @@ export default class App extends Component {
       isLoggedIn: false,
     }
   }
-
   componentWillMount(e) {
     if (localStorage.user) {
       this.setState({
@@ -25,7 +24,6 @@ export default class App extends Component {
       })
     }
   }
-
   handleLogoutClick(e) {
     this.setState({
       isLoggedIn: false,
@@ -33,8 +31,15 @@ export default class App extends Component {
     api.logout()
   }
 
+  logout = () => {
+    console.log('Logged In!')
+    this.setState({
+      isLoggedIn: false,
+    })
+  }
+
   login = () => {
-    console.log('WE HAVE SUCCESSFULLY PASSED THIS FUNCTION')
+    console.log('Logged In!')
     this.setState({
       isLoggedIn: true,
     })
@@ -49,20 +54,17 @@ export default class App extends Component {
           <NavLink to="/" exact>
             Home
           </NavLink>
-
           {!this.state.isLoggedIn && <NavLink to="/signup">Signup</NavLink>}
-          {/* {!api.isLoggedIn() && <NavLink to="/login"  >Login</NavLink>} */}
           {!this.state.isLoggedIn && <NavLink to="/login">Login</NavLink>}
           {this.state.isLoggedIn && (
             <Link to="/" onClick={e => this.handleLogoutClick(e)}>
               Logout
             </Link>
           )}
-          <NavLink to="/secret"> Profile </NavLink>
+          <NavLink to="/secret">My Jobs</NavLink>
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
-
           <Route
             path="/login"
             render={props => <Login {...props} login={this.login} />}
@@ -71,9 +73,10 @@ export default class App extends Component {
             path="/signup"
             render={props => <Signup {...props} login={this.login} />}
           />
-
-          {/* <Route path="/login" component={Login} login={() => this.login()} /> */}
-          <Route path="/secret" component={Secret} />
+          <Route
+            path="/secret"
+            render={props => <Secret {...props} logout={this.logout} />}
+          />
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>

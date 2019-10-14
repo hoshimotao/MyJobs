@@ -44,19 +44,19 @@ export default class Signup extends Component {
             <div className="info info-danger">{this.state.message}</div>
           )}
 
-          <div class="container">
-            <div class="row vertical-offset-100">
-              <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title"> Sign Up </h3>
+          <div className="container">
+            <div className="row vertical-offset-100">
+              <div className="col-md-4 col-md-offset-4">
+                <div className="panel panel-default">
+                  <div className="panel-heading">
+                    <h3 className="panel-title"> Sign Up </h3>
                   </div>
-                  <div class="panel-body">
+                  <div className="panel-body">
                     <form accept-charset="UTF-8">
                       <fieldset>
-                        <div class="form-group">
+                        <div className="form-group">
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             value={this.state.email}
                             name="email"
@@ -64,9 +64,9 @@ export default class Signup extends Component {
                             onChange={this.handleInputChange}
                           />{' '}
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="password"
                             value={this.state.password}
                             name="password"
@@ -76,7 +76,7 @@ export default class Signup extends Component {
                         </div>
 
                         <button
-                          class="btn btn-lg btn-success btn-block"
+                          className="btn btn-lg btn-success btn-block"
                           onClick={e => this.handleClick(e)}
                         >
                           Sign Up

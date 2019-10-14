@@ -47,7 +47,8 @@ body {
   }
 
   .App-header {
-    background-color: $primary;
+    background-color: lightseagreen;
+    ;
     padding: 20px;
     color: white;
 
@@ -113,6 +114,11 @@ body {
   margin-top: 20px;
 
 
+
+}
+
+.jobTitle:hover {
+  cursor: pointer;
 }
 
 li {
@@ -162,4 +168,21 @@ li {
 
 .plusSign {
   cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.deleteJob {
+  cursor: pointer;
+  color: red;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.removeAccount {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 10px;
+  color: red;
 }

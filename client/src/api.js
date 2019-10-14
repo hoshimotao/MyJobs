@@ -60,7 +60,7 @@ export default {
   },
 
   getJobs() {
-    return service
+    return service   // 3 axios get request to /job or http://localhost:5000/api/jobs which is the backend index.js
       .get('/jobs')
       .then(res => res.data)
       .catch(errHandler)
@@ -72,9 +72,9 @@ export default {
   },
 
   getSecret() {
-    return service
+    return service //3.  Go to server with the request route /secret
       .get('/secret')
-      .then(res => res.data)
+      .then(res => res.data) //6.  Get data from server and return it to JSX component
       .catch(errHandler)
   },
 
