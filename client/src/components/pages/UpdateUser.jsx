@@ -15,32 +15,19 @@ export default class UpdateUser extends Component {
       name: e.target.value,
     })
   }
-  componentDidMount() {
-    // axios
-    //   .get('http://localhost:5000/api/updateUser', { withCredentials: true })
-    //   .then(results => {
-    //     console.log('USER ID ============ ', results.data.user.name)
-    //     var username = results.data.user.name
-    //     this.setState({
-    //       name: username,
-    //     })
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-  }
 
   render() {
+    console.log(this)
     return (
       <div className="updateFormatPic">
-        Hello there, {this.state.name}
+        Hello there, {this.props.theUser.name}
         <h2> Update Username </h2>
         <form
           className="alignPost"
-          onSubmit={e => this.props.onSubmitHandler(e, this.state.name)}
-        >
+          onSubmit={e => this.props.onSubmitHandler(e, this.state.name)} >
+                      {/*[1]  ---> SUBMIT NAME CHANGE ---> CALLS ONSUBMITHANDLER ---> APP.JS*/}
           {' '}
-          {/*1 subtmit form*/}
+          
           <input onChange={this.typeName} id="update" type="text" name="name" />
           <button type="submit"> Save </button>
         </form>

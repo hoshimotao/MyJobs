@@ -14,6 +14,8 @@ export default class App extends Component {
 
     this.state = {
       isLoggedIn: false,
+      theUser: {},
+      name: '',
     }
   }
 
@@ -28,6 +30,16 @@ export default class App extends Component {
       })
     }
   }
+
+  componentDidMount() {
+    api.getUser().then(user => {
+      console.log(user)
+      this.setState({
+        theUser: user,
+      })
+    })
+  }
+
   handleLogoutClick(e) {
     this.setState({
       isLoggedIn: false,
@@ -36,26 +48,25 @@ export default class App extends Component {
   }
 
   updateUser = (e, name) => {
-    //2 calls this functoin
+    // 3 ---> RUN UPDATE USER ---> TIME TO POST THAT NEW INFO WAS ENTERED BY USER ---> GO TO USERROUTES
     e.preventDefault()
-    console.log(e.target.children)
-    console.log('sadfsdfg')
-    axios //3 do post request
+    console.log('APP.JS - UPDATE USER CALLED')
+    axios 
       .post(
         'http://localhost:5000/api/updateUser',
-        { name: name }, //FIXME
+        { name: name }, 
         { withCredentials: true }
       )
+
+
       .then(results => {
         //7 Back from the server .
-        console.log('hello', results.data)
-        this.setState(
-          {
-            //8 set the state with data from DB
-            name: results.data,
-          },
-          () => console.log(results.data)
-        )
+        console.log('APP.JS - THEN', results.data)
+        this.setState({
+          //8 set the state with data from DB
+          theUser: results.data,
+          // theUser: results.data,
+        })
       })
       .catch(err => {
         console.log(err)
@@ -115,7 +126,10 @@ export default class App extends Component {
           <Route
             path="/updateUser"
             render={props => (
-              <UpdateUser onSubmitHandler={this.updateUser} {...props} />
+              <UpdateUser
+                theUser={this.state.theUser}
+                onSubmitHandler={this.updateUser}  // 2 ---> FUNCTION FOUND ---> CALLS UPDATE USER FUNCTION ABOVE---^^^
+                {...props}/>
             )}
           />
           <Route render={() => <h2>404</h2>} />
@@ -124,3 +138,6 @@ export default class App extends Component {
     )
   }
 }
+
+
+

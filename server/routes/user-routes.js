@@ -12,29 +12,19 @@ router.post('/deleteAccount', isLoggedIn, (req, res, next) => {
   })
 })
 
-router.get('/updateUser', isLoggedIn, (req, res, next) => {
-  console.log(
-    '#########################    HIIII   ############',
-    this.user,
-    isLoggedIn
-  )
-  res.json({
-    user: req.user,
-  })
+router.get('/getUser', (req, res, next) => {
+  res.json(req.user)
 })
 
 router.post('/updateUser', isLoggedIn, (req, res, next) => {
-  //4 listens to client
-  // console.log('############ THIS IS THE REQ DOT USER #########', req.user)
+  //4 ---> IF LOGGED IN, FIND THE USER IN THE CURRENT DB AND UPDATE THE DATA WITH USERS INPUT
+
   //5 MONGODB
 
-  console.log(req.body)
+  console.log('THE USER ===== ', req.body)
   User.findByIdAndUpdate(req.user._id, req.body).then(results => {
     console.log(results)
-    res.json({
-      //6 sends data back to client
-      name: req.body,
-    })
+    res.json(req.body) //6 sends data back to client
   })
 })
 module.exports = router
