@@ -4,6 +4,7 @@ const router = express.Router()
 const Job = require('../models/Job')
 
 router.get('/secret', isLoggedIn, (req, res, next) => {
+  console.log(req.user)
   //4. Listen to client on route /secret
   //May do DB stuff here
   //5

@@ -58,6 +58,17 @@ export default class Signup extends Component {
                           <input
                             className="form-control"
                             type="text"
+                            value={this.state.name}
+                            name="name"
+                            placeholder="Your name"
+                            onChange={this.handleInputChange}
+                          />{' '}
+                        </div>
+
+                        <div className="form-group">
+                          <input
+                            className="form-control"
+                            type="text"
                             value={this.state.email}
                             name="email"
                             placeholder="Email"

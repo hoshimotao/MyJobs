@@ -186,3 +186,12 @@ li {
   margin-right: 10px;
   color: red;
 }
+
+.updateFormatPic {
+  display: flex;
+  flex-direction: column;
+}
+
+.updateFormatPic input {
+  display: inline;
+}

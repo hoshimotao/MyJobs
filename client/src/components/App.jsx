@@ -4,15 +4,19 @@ import Home from './pages/Home'
 import Secret from './pages/Secret'
 import { Login } from './pages/Login'
 import Signup from './pages/Signup'
+import UpdateUser from './pages/UpdateUser'
 import api from '../api'
+import axios from 'axios'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       isLoggedIn: false,
     }
   }
+
   componentWillMount(e) {
     if (localStorage.user) {
       this.setState({
@@ -29,6 +33,33 @@ export default class App extends Component {
       isLoggedIn: false,
     })
     api.logout()
+  }
+
+  updateUser = (e, name) => {
+    //2 calls this functoin
+    e.preventDefault()
+    console.log(e.target.children)
+    console.log('sadfsdfg')
+    axios //3 do post request
+      .post(
+        'http://localhost:5000/api/updateUser',
+        { name: name }, //FIXME
+        { withCredentials: true }
+      )
+      .then(results => {
+        //7 Back from the server .
+        console.log('hello', results.data)
+        this.setState(
+          {
+            //8 set the state with data from DB
+            name: results.data,
+          },
+          () => console.log(results.data)
+        )
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   logout = () => {
@@ -61,6 +92,10 @@ export default class App extends Component {
               Logout
             </Link>
           )}
+          {this.state.isLoggedIn && (
+            <Link to="/updateUser">Update Profile</Link>
+          )}
+
           <NavLink to="/secret">My Jobs</NavLink>
         </header>
         <Switch>
@@ -76,6 +111,12 @@ export default class App extends Component {
           <Route
             path="/secret"
             render={props => <Secret {...props} logout={this.logout} />}
+          />
+          <Route
+            path="/updateUser"
+            render={props => (
+              <UpdateUser onSubmitHandler={this.updateUser} {...props} />
+            )}
           />
           <Route render={() => <h2>404</h2>} />
         </Switch>

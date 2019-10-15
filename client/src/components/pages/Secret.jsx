@@ -13,9 +13,12 @@ export default class Secret extends Component {
       description: '',
       salary: 0,
       message: null,
+      email: '',
       listOfJobs: [],
       filteredJobs: [],
       url: '',
+      name: '',
+      pic: '',
     }
   }
 
@@ -26,12 +29,16 @@ export default class Secret extends Component {
 
       .then(data => {
         console.log(data)
+        console.log(data.user.pic)
         this.setState({
+          name: data.user.name,
+          email: data.user.email,
           jobTitle: data.jobTitle,
           filteredJobs: data.user.listOfJobs,
           listOfJobs: data.user.listOfJobs,
-         
+          pic: data.user.pic,
         })
+        console.log(this.state.email)
       }) //7.  Take data and set it to state
       .catch(err =>
         this.setState({
@@ -120,6 +127,7 @@ export default class Secret extends Component {
     }
     return (
       <div className="Secret">
+        <h1>Welcome to your profile {this.state.name}</h1>
         <h2> Your Jobs List </h2>
         <form>
           <input
