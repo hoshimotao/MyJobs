@@ -143,8 +143,8 @@ export default class Secret extends Component {
           i //9 MAP THROUGH THE FILTERED JOBS AND DISPLAY RESULTS
         ) => (
           <div key={i} className="listWidth">
-            <div>
-              <li key={i}>
+            <div key={i}>
+              <li>
                 <a href={eachJob.url}>
                   <span className="jobTitle"> {eachJob.jobTitle} </span>
                 </a>

@@ -24,11 +24,16 @@ export default class UpdateUser extends Component {
         <h2> Update Username </h2>
         <form
           className="alignPost"
-          onSubmit={e => this.props.onSubmitHandler(e, this.state.name)} >
-                      {/*[1]  ---> SUBMIT NAME CHANGE ---> CALLS ONSUBMITHANDLER ---> APP.JS*/}
-          {' '}
-          
-          <input onChange={this.typeName} id="update" type="text" name="name" />
+          onSubmit={e => this.props.onSubmitHandler(e, this.state.name)}
+        >
+          {/*[1]  ---> SUBMIT NAME CHANGE ---> CALLS ONSUBMITHANDLER ---> APP.JS*/}{' '}
+          <input
+            onChange={this.typeName}
+            id="update"
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
           <button type="submit"> Save </button>
         </form>
         <br />

@@ -16,6 +16,7 @@ export default class App extends Component {
       isLoggedIn: false,
       theUser: {},
       name: '',
+      placeholder: 'Name',
     }
   }
 
@@ -50,14 +51,16 @@ export default class App extends Component {
   updateUser = (e, name) => {
     // 3 ---> RUN UPDATE USER ---> TIME TO POST THAT NEW INFO WAS ENTERED BY USER ---> GO TO USERROUTES
     e.preventDefault()
+    e.target.reset();
+    
+
     console.log('APP.JS - UPDATE USER CALLED')
-    axios 
+    axios
       .post(
         'http://localhost:5000/api/updateUser',
-        { name: name }, 
+        { name: name },
         { withCredentials: true }
       )
-
 
       .then(results => {
         //7 Back from the server .
@@ -92,22 +95,52 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title"> My Jobs Search </h1>
-          <NavLink to="/" exact>
-            Home
-          </NavLink>
-          {!this.state.isLoggedIn && <NavLink to="/signup">Signup</NavLink>}
-          {!this.state.isLoggedIn && <NavLink to="/login">Login</NavLink>}
-          {this.state.isLoggedIn && (
-            <Link to="/" onClick={e => this.handleLogoutClick(e)}>
-              Logout
-            </Link>
-          )}
-          {this.state.isLoggedIn && (
-            <Link to="/updateUser">Update Profile</Link>
-          )}
+          <div className="flexHeader">
+            <h1 className="App-title"> My Jobs Search </h1>
+            <div>
+              <NavLink to="/" exact className="linkEffects">
+                {' '}
+                Home |{' '}
+              </NavLink>
+              {!this.state.isLoggedIn && (
+                <NavLink to="/signup" className="linkEffects">
+                  {' '}
+                  Signup |{' '}
+                </NavLink>
+              )}
+              {!this.state.isLoggedIn && (
+                <NavLink to="/login" className="linkEffects">
+                  {' '}
+                  Login |{' '}
+                </NavLink>
+              )}
+              {this.state.isLoggedIn && (
+                <Link to="/updateUser" className="linkEffects">
+                  Update Profile |{' '}
+                </Link>
+              )}
 
-          <NavLink to="/secret">My Jobs</NavLink>
+              <NavLink to="/secret" className="linkEffects">
+                My Jobs |
+              </NavLink>
+              {this.state.isLoggedIn && (
+                <Link
+                  to="/"
+                  className="linkEffects"
+                  onClick={e => this.handleLogoutClick(e)}
+                >
+                  Logout
+                </Link>
+              )}
+            </div>
+          </div>
+          <div>
+            <img
+              className="profilePic"
+              alt="Profile"
+              src={this.state.theUser.pic}
+            />
+          </div>
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
@@ -128,8 +161,9 @@ export default class App extends Component {
             render={props => (
               <UpdateUser
                 theUser={this.state.theUser}
-                onSubmitHandler={this.updateUser}  // 2 ---> FUNCTION FOUND ---> CALLS UPDATE USER FUNCTION ABOVE---^^^
-                {...props}/>
+                onSubmitHandler={this.updateUser} // 2 ---> FUNCTION FOUND ---> CALLS UPDATE USER FUNCTION ABOVE---^^^
+                {...props}
+              />
             )}
           />
           <Route render={() => <h2>404</h2>} />
@@ -138,6 +172,3 @@ export default class App extends Component {
     )
   }
 }
-
-
-
