@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import api from '../../api'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import serverUrl from '../../configServer'
 
 export default class Secret extends Component {
   constructor(props) {
@@ -69,11 +70,7 @@ export default class Secret extends Component {
     window.confirm('Are you sure you want to delete your account?')
     if (window.confirm) {
       axios
-        .post(
-          'http://localhost:5000/api/deleteAccount',
-          { id },
-          { withCredentials: true }
-        )
+        .post(`${serverUrl}/deleteAccount`, { id }, { withCredentials: true })
         .then(account => {
           console.log('ACCOUNT DELETED!!!!!!!', account)
           this.props.logout()
@@ -101,11 +98,7 @@ export default class Secret extends Component {
     let id = e.target.id
 
     axios
-      .post(
-        'http://localhost:5000/api/deleteJob',
-        { id },
-        { withCredentials: true }
-      )
+      .post(`${serverUrl}/deleteJob`, { id }, { withCredentials: true })
       .then(results => {
         console.log('hello', results.data)
         this.setState(

@@ -7,6 +7,7 @@ import Signup from './pages/Signup'
 import UpdateUser from './pages/UpdateUser'
 import api from '../api'
 import axios from 'axios'
+import serverUrl from '../configServer.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -51,13 +52,12 @@ export default class App extends Component {
   updateUser = (e, name) => {
     // 3 ---> RUN UPDATE USER ---> TIME TO POST THAT NEW INFO WAS ENTERED BY USER ---> GO TO USERROUTES
     e.preventDefault()
-    e.target.reset();
-    
+    e.target.reset()
 
     console.log('APP.JS - UPDATE USER CALLED')
     axios
       .post(
-        'http://localhost:5000/api/updateUser',
+        `${serverUrl}/updateUser`,
         { name: name },
         { withCredentials: true }
       )

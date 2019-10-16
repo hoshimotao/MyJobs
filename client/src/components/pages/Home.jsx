@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../api'
 import axios from 'axios'
+import serverUrl from '../../configServer.js'
 
 export default class Home extends Component {
   state = {
@@ -8,11 +9,14 @@ export default class Home extends Component {
     filteredJob: [],
   }
 
-  componentDidMount() { // 1 home page loads
+  componentDidMount() {
+    // 1 home page loads
     api
-      .getJobs()// 2 runs function called get Jobs
-      .then(jobs => {  // 7. - GOT RESPONSE FROM BACKEND ROUTER.GET /JOBS
-        this.setState({ // 8 - SET THE STATE TO THE FOLLOWING
+      .getJobs() // 2 runs function called get Jobs
+      .then(jobs => {
+        // 7. - GOT RESPONSE FROM BACKEND ROUTER.GET /JOBS
+        this.setState({
+          // 8 - SET THE STATE TO THE FOLLOWING
           jobs: jobs,
           filteredJob: jobs,
         })
@@ -23,8 +27,8 @@ export default class Home extends Component {
   showJobs = e => {
     console.log(this.state.jobs)
 
-    let searchResult = this.state.jobs.filter(eachJob => {  
-       return eachJob.jobTitle.toLowerCase().includes(e.target.value)
+    let searchResult = this.state.jobs.filter(eachJob => {
+      return eachJob.jobTitle.toLowerCase().includes(e.target.value)
     })
     this.setState(
       {
@@ -41,11 +45,7 @@ export default class Home extends Component {
     let id = e.target.id
 
     axios
-      .post(
-        'http://localhost:5000/api/addJob',
-        { id },
-        { withCredentials: true }
-      )
+      .post(`${serverUrl}/addJob`, { id }, { withCredentials: true })
       .then(results => {
         console.log(results)
         console.log(results.data.message)
@@ -62,7 +62,10 @@ export default class Home extends Component {
         {/* SEARCH BOX */}
         <input type="search" onChange={this.showJobs} placeholder="Search" />
 
-        {this.state.filteredJob.map((eachJob, i) => ( //9 MAP THROUGH THE FILTERED JOBS AND DISPLAY RESULTS
+        {this.state.filteredJob.map((
+          eachJob,
+          i //9 MAP THROUGH THE FILTERED JOBS AND DISPLAY RESULTS
+        ) => (
           <div key={i} className="listWidth">
             <div>
               <li key={i}>
