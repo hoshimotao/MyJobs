@@ -50,6 +50,7 @@ export default class Home extends Component {
         console.log(results)
         console.log(results.data.message)
       })
+      .catch(err => console.log(err))
   }
 
   render() {
