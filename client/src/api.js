@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const service = axios.create({
+var service = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
       ? '/api'
@@ -45,11 +45,11 @@ export default {
       .catch(errHandler)
   },
 
-  getUser(){
+  getUser() {
     return service
-    .get('/getUser')
-    .then(res => res.data)
-    .catch(errHandler)
+      .get('/getUser')
+      .then(res => res.data)
+      .catch(errHandler)
   },
 
   login(email, password) {
@@ -67,7 +67,7 @@ export default {
   },
 
   getJobs() {
-    return service   // 3 axios get request to /job or http://localhost:5000/api/jobs which is the backend index.js
+    return service // 3 axios get request to /job or http://localhost:5000/api/jobs which is the backend index.js
       .get('/jobs')
       .then(res => res.data)
       .catch(errHandler)
