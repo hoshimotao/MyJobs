@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import api from '../../api'
-import ReactDOM from 'react-router-dom'
+// import axios from 'axios'
+// import api from '../../api'
+// import ReactDOM from 'react-router-dom'
 
 export default class UpdateUser extends Component {
   state = {
