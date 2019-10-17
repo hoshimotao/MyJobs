@@ -8,7 +8,7 @@ import UpdateUser from './pages/UpdateUser'
 import api from '../api'
 import axios from 'axios'
 import serverUrl from '../configServer.js'
-import AddPic from './AddPic'
+// import AddPic from './AddPic'
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ export default class App extends Component {
       theUser: {},
       name: '',
       placeholder: 'Name',
+      pic: '',
     }
   }
 
@@ -41,6 +42,11 @@ export default class App extends Component {
         theUser: user,
       })
     })
+  }
+
+  setUser = user => {
+    console.log(user)
+    this.setState({ theUser: user })
   }
 
   handleLogoutClick(e) {
@@ -69,7 +75,6 @@ export default class App extends Component {
         this.setState({
           //8 set the state with data from DB
           theUser: results.data,
-          // theUser: results.data,
         })
       })
       .catch(err => {
@@ -147,7 +152,9 @@ export default class App extends Component {
           <Route path="/" exact component={Home} />
           <Route
             path="/create"
-            render={props => <AddPic {...props} addPic={this.imageUrl} />}
+            render={props => (
+              <UpdateUser {...props} handleFileUpload={this.imageUrl} />
+            )}
           />
           <Route
             path="/login"
@@ -165,6 +172,7 @@ export default class App extends Component {
             path="/updateUser"
             render={props => (
               <UpdateUser
+                setUser={this.setUser}
                 theUser={this.state.theUser}
                 onSubmitHandler={this.updateUser} // 2 ---> FUNCTION FOUND ---> CALLS UPDATE USER FUNCTION ABOVE---^^^
                 {...props}

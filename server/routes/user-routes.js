@@ -19,9 +19,7 @@ router.get('/getUser', (req, res, next) => {
 
 router.post('/updateUser', isLoggedIn, (req, res, next) => {
   //4 ---> IF LOGGED IN, FIND THE USER IN THE CURRENT DB AND UPDATE THE DATA WITH USERS INPUT
-
   //5 MONGODB
-
   console.log('THE USER ===== ', req.body)
   User.findByIdAndUpdate(req.user._id, req.body).then(results => {
     console.log(results)
@@ -29,16 +27,27 @@ router.post('/updateUser', isLoggedIn, (req, res, next) => {
   })
 })
 
-router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
-  console.log('file is: ', req.file)
+router.post(
+  '/upload',
+  [uploader.single('imageUrl'), isLoggedIn],
+  (req, res, next) => {
+    console.log('file is: ', req.file)
 
-  if (!req.file) {
-    next(new Error('No file uploaded!'))
-    return
+    if (!req.file) {
+      next(new Error('No file uploaded!'))
+      return
+    }
+    // get secure_url from the file object and save it in the
+    // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+    User.findByIdAndUpdate(
+      req.user._id,
+      { pic: req.file.secure_url },
+      { new: true }
+    ).then(results => {
+      console.log(results)
+      res.json({ secure_url: req.file.secure_url, user: results })
+    })
   }
-  // get secure_url from the file object and save it in the
-  // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
-  res.json({ secure_url: req.file.secure_url })
-})
+)
 
 module.exports = router
