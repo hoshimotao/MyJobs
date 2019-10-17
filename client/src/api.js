@@ -20,6 +20,26 @@ const errHandler = err => {
 export default {
   service: service,
 
+  handleUpload(theFile) {
+    // console.log('file in service: ', theFile)
+    return service
+      .post('/upload', theFile)
+      .then(res => res.data)
+      .catch(err => {
+        console.log(err)
+      })
+  },
+
+  saveNewThing(newThing) {
+    // console.log('new thing is: ', newThing)
+    return service
+      .post('/things/create', newThing)
+      .then(res => res.data)
+      .catch(err => {
+        console.log(err)
+      })
+  },
+
   // This method is synchronous and returns true or false
   // To know if the user is connected, we just check if we have a value for localStorage.getItem('user')
   isLoggedIn() {

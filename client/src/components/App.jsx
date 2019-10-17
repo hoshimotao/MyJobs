@@ -8,6 +8,7 @@ import UpdateUser from './pages/UpdateUser'
 import api from '../api'
 import axios from 'axios'
 import serverUrl from '../configServer.js'
+import AddPic from './AddPic'
 
 export default class App extends Component {
   constructor(props) {
@@ -144,6 +145,10 @@ export default class App extends Component {
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route
+            path="/create"
+            render={props => <AddPic {...props} addPic={this.imageUrl} />}
+          />
           <Route
             path="/login"
             render={props => <Login {...props} login={this.login} />}
