@@ -9,6 +9,7 @@ export default class Signup extends Component {
       name: '',
       password: '',
       message: null,
+      isLoggedIn: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -26,6 +27,9 @@ export default class Signup extends Component {
       name: this.state.name,
       password: this.state.password,
     }
+    this.setState({
+      isLoggedIn: true,
+    })
     api
       .signup(data)
       .then(result => {
