@@ -46,7 +46,9 @@ export default class App extends Component {
 
   setUser = user => {
     console.log(user)
-    this.setState({ theUser: user })
+    this.setState({
+      theUser: user,
+    })
   }
 
   handleLogoutClick(e) {
@@ -95,6 +97,7 @@ export default class App extends Component {
     this.setState({
       isLoggedIn: true,
     })
+    window.location.reload()
   }
 
   render() {
