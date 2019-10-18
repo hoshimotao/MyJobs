@@ -21,6 +21,7 @@ export class Login extends Component {
 
   handleClick(e) {
     e.preventDefault()
+
     api
       .login(this.state.email, this.state.password)
       .then(result => {
@@ -28,6 +29,7 @@ export class Login extends Component {
           isLoggedIn: true,
         })
         console.log(this)
+
         this.props.login()
 
         console.log('SUCCESS!')

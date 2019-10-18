@@ -93,10 +93,10 @@ body {
 // --------------------
 // Style for Home component
 .Home {
-  
+
   text-align: center;
   background-color: #faf5f5;
-  margin-top: -30vh;
+
 
   p {
     font-size: 1.2em;
@@ -106,7 +106,7 @@ body {
 // --------------------
 // Style for Secret component
 .Secret {
-  margin-top: -30vh;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -117,6 +117,7 @@ body {
 
   }
 }
+
 
 .Login {
   margin-top: 20px;

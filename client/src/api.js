@@ -95,6 +95,7 @@ export default {
 
   logout() {
     localStorage.removeItem('user')
+    localStorage.clear()
     return service.get('/logout')
   },
 

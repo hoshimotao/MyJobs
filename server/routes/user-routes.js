@@ -41,7 +41,7 @@ router.post(
     // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
     User.findByIdAndUpdate(
       req.user._id,
-      { pic: req.file.secure_url },
+      { imageUrl: req.file.secure_url },
       { new: true }
     ).then(results => {
       console.log(results)

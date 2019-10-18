@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
 import service from '../../api'
-import axios from 'axios'
-// import ReactDOM from 'react-router-dom'
 
 export default class UpdateUser extends Component {
   state = {
@@ -23,7 +20,7 @@ export default class UpdateUser extends Component {
 
   handleFileSubmitToYourDB = e => {
     e.preventDefault()
-    console.log(this.state)
+    console.log(this.state.imageUrl)
     service
       .saveNewThing(this.state)
       .then(res => {
@@ -33,25 +30,10 @@ export default class UpdateUser extends Component {
       .catch(err => {
         console.log('Error while adding the thing: ', err)
       })
-    // axios
-    // .post('/upload', { withCredentials: true })
-
-    // .then(results => {
-    //   //7 Back from the server .
-    //   console.log('RESULTS!!!!!!!!!!!!!!!!!!!!!')
-    //   console.log('APP.JS - THEN', this.state.imageUrl)
-    //   this.setState({
-    //     //8 set the state with data from DB
-    //     theUser: results.data,
-    //   })
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
   }
   handleFileUpload = e => {
     e.preventDefault()
-    console.log('The file to be uploaded is: ')
+    console.log('The file to be uploaded is: ', e.target.files[0])
     console.log('WHAT THE FUCK')
 
     const uploadData = new FormData()

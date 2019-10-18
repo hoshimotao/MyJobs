@@ -6,7 +6,10 @@ const userSchema = new Schema({
   name: String,
   password: String,
   listOfJobs: Array,
-  pic: {type: String, default: 'https://i.stack.imgur.com/l60Hf.png'},
+  imageUrl: { 
+    type: String, 
+    default: 'https://i.stack.imgur.com/l60Hf.png' 
+  },
   personalLink: String,
 })
 

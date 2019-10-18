@@ -19,7 +19,7 @@ export default class Secret extends Component {
       filteredJobs: [],
       url: '',
       name: '',
-      pic: '',
+      imageUrl: '',
     }
   }
 
@@ -30,14 +30,14 @@ export default class Secret extends Component {
 
       .then(data => {
         console.log(data)
-        console.log(data.user.pic)
+        console.log(data.user.imageUrl)
         this.setState({
           name: data.user.name,
           email: data.user.email,
           jobTitle: data.jobTitle,
           filteredJobs: data.user.listOfJobs,
           listOfJobs: data.user.listOfJobs,
-          pic: data.user.pic,
+          imageUrl: data.user.imageUrl,
         })
         console.log(this.state.email)
       }) //7.  Take data and set it to state

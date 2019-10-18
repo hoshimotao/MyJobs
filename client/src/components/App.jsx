@@ -19,7 +19,7 @@ export default class App extends Component {
       theUser: {},
       name: '',
       placeholder: 'Name',
-      pic: '',
+      imageUrl: '',
     }
   }
 
@@ -126,10 +126,11 @@ export default class App extends Component {
                   Update Profile |{' '}
                 </Link>
               )}
-
-              <NavLink to="/secret" className="linkEffects">
-                My Jobs |
-              </NavLink>
+              {this.state.isLoggedIn && (
+                <NavLink to="/secret" className="linkEffects">
+                  My Jobs |
+                </NavLink>
+              )}
               {this.state.isLoggedIn && (
                 <Link
                   to="/"
@@ -142,16 +143,22 @@ export default class App extends Component {
             </div>
           </div>
         </header>
-        <div className="flexPicture">
-          <div className="card">
-            <img
-              className="profilePic"
-              alt="Profile"
-              src={this.state.theUser.pic}
-            />
-            <h3 className="theUserName"> {this.state.theUser.name}</h3>
+
+        {this.state.isLoggedIn ? (
+          <div className="flexPicture">
+            <div className="card">
+              <img
+                className="profilePic"
+                alt="Profile"
+                src={this.state.theUser.imageUrl}
+              />
+              <h3 className="theUserName"> {this.state.theUser.name}</h3>
+            </div>
           </div>
-        </div>
+        ) : (
+          <Route path="/" exact component={Home} />
+        )}
+
         <Switch>
           <Route path="/" exact component={Home} />
           <Route
