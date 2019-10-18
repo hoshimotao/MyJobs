@@ -93,6 +93,7 @@ body {
 // --------------------
 // Style for Home component
 .Home {
+  
   text-align: center;
   background-color: #faf5f5;
   margin-top: -30vh;
@@ -130,6 +131,7 @@ body {
   justify-content: flex-start;
   font-size: 2em;
   margin-top: 20px;
+  color: rgb(49, 129, 209)
 }
 
 .jobTitle:hover {
@@ -154,13 +156,13 @@ li {
   justify-content: flex-start;
   margin-top: 20px;
   width: 40vw;
-  border: 1px solid gray;
+  border: 1px solid rgba(128, 128, 128, 0.571);
   margin-left: 20px;
   padding: 0px 10px 15px;
   border-radius: 10px;
   box-shadow: 10px 5px 5px lightgray;
   height: auto;
-  background: linear-gradient(217deg, rgba(89, 91, 91, 0.2), rgba(241, 238, 238, 0.2) 70.71%);
+  background: linear-gradient(217deg, rgba(237, 236, 255, 0.646), rgba(231, 232, 247, 0.415) 70.71%);
 
 
 }
@@ -231,6 +233,7 @@ li {
   width: 140px;
   height: 150px;
   object-fit: cover;
+  border-radius: 10px;
 
 }
 
@@ -243,12 +246,14 @@ li {
   padding-left: 5px;
 
 
+
   .card {
     width: 160px;
     border: 1px solid lightgray;
     box-shadow: 2px 2px 2px lightgray;
     height: 220px;
-    padding: 5px 0px 20px 8px
+    padding: 5px 0px 20px 8px;
+    border-radius: 10px;
   }
 
   h3 {
