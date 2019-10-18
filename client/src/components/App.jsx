@@ -59,6 +59,7 @@ export default class App extends Component {
   updateUser = (e, name) => {
     // 3 ---> RUN UPDATE USER ---> TIME TO POST THAT NEW INFO WAS ENTERED BY USER ---> GO TO USERROUTES
     e.preventDefault()
+    window.location.reload()
     e.target.reset()
 
     console.log('APP.JS - UPDATE USER CALLED')
@@ -140,14 +141,17 @@ export default class App extends Component {
               )}
             </div>
           </div>
-          <div>
+        </header>
+        <div className="flexPicture">
+          <div className="card">
             <img
               className="profilePic"
               alt="Profile"
               src={this.state.theUser.pic}
             />
+            <h3 className="theUserName"> {this.state.theUser.name}</h3>
           </div>
-        </header>
+        </div>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route

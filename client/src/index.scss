@@ -21,6 +21,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #faf5f5;
+
 }
 
 .info {
@@ -51,6 +53,10 @@ body {
     ;
     padding: 20px;
     color: white;
+    height: 8vh;
+    border-bottom: 2px solid lightgray;
+
+
 
     a {
       color: white;
@@ -64,7 +70,7 @@ body {
   }
 
   .App-title {
-    font-size: 2.5em;
+    font-size: 1.5em;
     margin-top: 0;
 
   }
@@ -88,6 +94,8 @@ body {
 // Style for Home component
 .Home {
   text-align: center;
+  background-color: #faf5f5;
+  margin-top: -30vh;
 
   p {
     font-size: 1.2em;
@@ -97,9 +105,15 @@ body {
 // --------------------
 // Style for Secret component
 .Secret {
+  margin-top: -30vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
   .result {
     font-size: 1.2em;
     color: $primary;
+
   }
 }
 
@@ -108,7 +122,7 @@ body {
 }
 
 .bigTitle {
-  font-size: 3em;
+  font-size: 30px;
 }
 
 .jobTitle {
@@ -116,9 +130,6 @@ body {
   justify-content: flex-start;
   font-size: 2em;
   margin-top: 20px;
-
-
-
 }
 
 .jobTitle:hover {
@@ -139,6 +150,8 @@ li {
 
 
 .listWidth {
+  display: flex;
+  justify-content: flex-start;
   margin-top: 20px;
   width: 40vw;
   border: 1px solid gray;
@@ -147,6 +160,16 @@ li {
   border-radius: 10px;
   box-shadow: 10px 5px 5px lightgray;
   height: auto;
+  background: linear-gradient(217deg, rgba(89, 91, 91, 0.2), rgba(241, 238, 238, 0.2) 70.71%);
+
+
+}
+
+.theJobs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .addToListSymbol {
@@ -168,6 +191,7 @@ li {
 
 .description {
   padding-top: 10px;
+  text-align: left;
 }
 
 .plusSign {
@@ -199,12 +223,39 @@ li {
 }
 
 .updateFormatPic input {
-  display: inline;
+  display: flex;
+  align-items: center;
 }
 
 .profilePic {
-  width: 10vw;
-  height: 12vh;
+  width: 140px;
+  height: 150px;
+  object-fit: cover;
+
+}
+
+.flexPicture {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  padding-left: 5px;
+
+
+  .card {
+    width: 160px;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 2px lightgray;
+    height: 220px;
+    padding: 5px 0px 20px 8px
+  }
+
+  h3 {
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+  }
 }
 
 .flexHeader {
@@ -215,4 +266,8 @@ li {
 
 .linkEffects:hover {
   font-weight: 700;
+}
+
+.theUserName {
+  font-size: 3em;
 }

@@ -120,8 +120,8 @@ export default class Secret extends Component {
     }
     return (
       <div className="Secret">
-        <h1>Welcome to your profile {this.state.name}</h1>
         <h2> Your Jobs List </h2>
+        <br />
         <form>
           <input
             type="search"

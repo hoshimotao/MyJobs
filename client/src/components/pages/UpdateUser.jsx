@@ -76,10 +76,9 @@ export default class UpdateUser extends Component {
   }
 
   render() {
-    console.log(this)
+    console.log(this, 'is this loading')
     return (
       <div className="updateFormatPic">
-        Hello there, {this.props.theUser.name} ????
         <h2> Update Username </h2>
         <form
           className="alignPost"

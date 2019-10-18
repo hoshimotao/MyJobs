@@ -57,26 +57,26 @@ export default class Home extends Component {
     console.log(this.state.jobs)
     return (
       <div className="Home">
+        
         <h1 className="bigTitle"> Your search starts here </h1>
-        <p> Potential jobs at your finger tips </p>
         <br />
         {/* SEARCH BOX */}
         <input type="search" onChange={this.showJobs} placeholder="Search" />
+
+      <div className='theJobs'>
 
         {this.state.filteredJob.map((
           eachJob,
           i //9 MAP THROUGH THE FILTERED JOBS AND DISPLAY RESULTS
         ) => (
           <div key={i} className="listWidth">
-            <div>
-              <li key={i}>
-                <span className="jobTitle"> {eachJob.jobTitle} </span>
-                <span className="companyName"> {eachJob.companyName}</span>
-                <p className="description"> {eachJob.description} </p>
-                <br />
-                <span className="location"> Location: {eachJob.location} </span>
-              </li>
-            </div>
+            <li key={i} className="flexedJobTitles">
+              <span className="jobTitle"> {eachJob.jobTitle} </span>
+              <span className="companyName"> {eachJob.companyName}</span>
+              <p className="description"> {eachJob.description} </p>
+              <br />
+              <span className="location"> Location: {eachJob.location} </span>
+            </li>
             <div className="addToListSymbol">
               <h2
                 id={eachJob._id}
@@ -90,6 +90,7 @@ export default class Home extends Component {
           </div>
         ))}
         <hr />
+        </div>
       </div>
     )
   }
